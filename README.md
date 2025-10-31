@@ -1,5 +1,7 @@
+#### Developed based on the project example in [roadmap.sh](https://roadmap.sh/projects/github-random-repo)
+
 ## Tools
-This project includes HTML, CSS, and Vanilla JS.
+This project includes HTML, CSS and Vanilla JS.
 
 ## API
 Github API was used in this project. [API Link](https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#search-repositories)
