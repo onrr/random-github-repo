@@ -11,11 +11,33 @@ fetch("languages.json")
     });
   });
 
+
+const toggleButton = document.querySelector("#toggle-theme");
+const body = document.body;
+
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "dark") {
+  body.classList.add("dark");
+  toggleButton.textContent = "☀️";
+}
+
+toggleButton.addEventListener("click", () => {
+  body.classList.toggle("dark");
+
+  if (body.classList.contains("dark")) {
+    toggleButton.textContent = "☀️";
+    localStorage.setItem("theme", "dark");
+  } else {
+    toggleButton.textContent = "🌙";
+    localStorage.setItem("theme", "light");
+  }
+});
+
 async function getRandomRepo() {
   const lang = document.getElementById("language").value;
   const resultDiv = document.querySelector(".result");
-  resultDiv.style.backgroundColor = "rgb(233 236 239)";
-  resultDiv.style.border = "0";
+  resultDiv.classList.remove("error");
+  resultDiv.classList.remove("active");
   resultDiv.innerHTML = "<p>Loading, please wait..</p>";
 
   try {
@@ -27,31 +49,31 @@ async function getRandomRepo() {
     const data = await response.json();
 
     if (!data.items || data.items.length === 0) {
+      resultDiv.classList.add("error");
       resultDiv.innerHTML = "<p>Error fetching repositories</p>";
-      resultDiv.style.backgroundColor = "rgb(255 201 201)";
       return;
     }
 
     const randomRepo =
       data.items[Math.floor(Math.random() * data.items.length)];
 
-    resultDiv.style.border = "2px solid #444";
-    resultDiv.style.backgroundColor = "#fff";
+    resultDiv.classList.add("active");
     resultDiv.innerHTML = `
         <a href="${randomRepo.html_url}" target="_blank">
-            <h2>${randomRepo.name}</h2>
-            <p>${randomRepo.description || "-"}</p>
+            <div class="info">
+              <h2>${randomRepo.name}</h2>
+              <p>${randomRepo.description || "-"}</p>
+            </div>
             <div class="stats">
-                <span>💻 ${
-                  randomRepo.language.toLocaleString("en-US") || "-"
-                }</span>
-                <span>⭐ ${
-                  randomRepo.watchers.toLocaleString("en-US") + " Stars" || "-"
-                }</span>
-                <span>🔀 ${
-                  randomRepo.forks_count.toLocaleString("en-US") + " Forks" ||
-                  "-"
-                }</span>
+              <span>💻 ${
+                randomRepo.language.toLocaleString("en-US") || "-"
+              }</span>
+              <span>⭐ ${
+                randomRepo.watchers.toLocaleString("en-US") + " Stars" || "-"
+              }</span>
+              <span>🔀 ${
+                randomRepo.forks_count.toLocaleString("en-US") + " Forks" || "-"
+              }</span>
             </div>
         </a>`;
   } catch (error) {
