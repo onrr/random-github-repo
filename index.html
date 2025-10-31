@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Random Github Repor</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Random Github Repository</h1>
+      <div class="finder">
+        <div class="header">
+          <span class="block"></span>
+          <h6>Github Repository Finder</h6>
+        </div>
+        <select id="language">
+          <option selected>Select a language</option>
+        </select>
+        <div class="result"><p>Please select a language</p></div>
+        <button id="refresh" onclick="getRandomRepo()">Refresh</button>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

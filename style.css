@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Press Start 2P", monospace;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+}
+
+h1 {
+  color: #000;
+  text-shadow: 1px 1px #000;
+  text-align: center;
+}
+
+.finder {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 100px;
+}
+
+.finder .header {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  gap: 0 12px;
+}
+
+.finder .header .block {
+  width: 24px;
+  height: 24px;
+  background: #000;
+  border-radius: 2px;
+}
+
+.finder select {
+  width: 100%;
+  height: 48px;
+  background-color: transparent;
+  color: #222;
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.finder .result {
+  width: 100%;
+  min-height: 230px;
+  background-color: rgb(233 236 239);
+  font-size: 20px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.finder .result p {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.finder .result a {
+  width: 100%;
+  margin: 16px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+  color: #222;
+  transition: 0.15s;
+}
+
+.finder .result a:hover {
+  transform: scale(1.01);
+}
+
+.finder .result a h2 {
+  color: #000;
+}
+
+.finder .result a p {
+  color: gray;
+}
+
+.finder .result a .stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: auto;
+  color: gray;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.finder button {
+  width: 100%;
+  height: 48px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+@media only screen and (max-width: 640px) {
+  .finder {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .header {
+    flex-direction: column;
+  }
+  .header .block {
+    margin-bottom: 10px;
+  }
+}
